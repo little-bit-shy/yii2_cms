@@ -27,7 +27,7 @@ $columns[] = [
 ?>
 <div class="assignment-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+
 
     <?php Pjax::begin(); ?>
     <?=

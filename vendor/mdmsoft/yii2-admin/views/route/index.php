@@ -20,7 +20,7 @@ $this->registerJs("var _opts = {$opts};");
 $this->registerJs($this->render('_script.js'));
 $animateIcon = ' <i class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></i>';
 ?>
-<h1><?= Html::encode($this->title) ?></h1>
+
 <div class="row">
     <div class="col-sm-11">
         <div class="input-group">
