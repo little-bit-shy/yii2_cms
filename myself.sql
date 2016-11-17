@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50552
 File Encoding         : 65001
 
-Date: 2016-11-16 16:24:20
+Date: 2016-11-17 11:07:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,7 +30,8 @@ CREATE TABLE `myself_auth_assignment` (
 -- ----------------------------
 -- Records of myself_auth_assignment
 -- ----------------------------
-INSERT INTO `myself_auth_assignment` VALUES ('超级管理员就是这么叼', '1', '1479280370');
+INSERT INTO `myself_auth_assignment` VALUES ('admin', '2', '1479350895');
+INSERT INTO `myself_auth_assignment` VALUES ('root', '1', '1479280370');
 
 -- ----------------------------
 -- Table structure for myself_auth_item
@@ -59,8 +60,9 @@ INSERT INTO `myself_auth_item` VALUES ('/site/error', '2', null, null, null, '14
 INSERT INTO `myself_auth_item` VALUES ('/site/index', '2', null, null, null, '1479283290', '1479283290');
 INSERT INTO `myself_auth_item` VALUES ('/site/login', '2', null, null, null, '1479283297', '1479283297');
 INSERT INTO `myself_auth_item` VALUES ('/site/logout', '2', null, null, null, '1479283297', '1479283297');
-INSERT INTO `myself_auth_item` VALUES ('超级管理员', '2', '裤衩穿外面的家伙...', null, null, '1479280063', '1479280063');
-INSERT INTO `myself_auth_item` VALUES ('超级管理员就是这么叼', '1', '想咋咋的，你瞅啥...', null, null, '1479280347', '1479280347');
+INSERT INTO `myself_auth_item` VALUES ('admin', '1', '普通管理员...', null, null, '1479350632', '1479350632');
+INSERT INTO `myself_auth_item` VALUES ('Author', '2', '作者拥有的权限~~', 'backend\\rbac\\AuthorRule', null, '1479345544', '1479348781');
+INSERT INTO `myself_auth_item` VALUES ('root', '1', '想咋咋的，你瞅啥...', null, null, '1479280347', '1479350663');
 
 -- ----------------------------
 -- Table structure for myself_auth_item_child
@@ -78,8 +80,9 @@ CREATE TABLE `myself_auth_item_child` (
 -- ----------------------------
 -- Records of myself_auth_item_child
 -- ----------------------------
-INSERT INTO `myself_auth_item_child` VALUES ('超级管理员', '/*');
-INSERT INTO `myself_auth_item_child` VALUES ('超级管理员就是这么叼', '超级管理员');
+INSERT INTO `myself_auth_item_child` VALUES ('root', '/*');
+INSERT INTO `myself_auth_item_child` VALUES ('admin', '/site/*');
+INSERT INTO `myself_auth_item_child` VALUES ('admin', 'Author');
 
 -- ----------------------------
 -- Table structure for myself_auth_rule
@@ -96,6 +99,7 @@ CREATE TABLE `myself_auth_rule` (
 -- ----------------------------
 -- Records of myself_auth_rule
 -- ----------------------------
+INSERT INTO `myself_auth_rule` VALUES ('backend\\rbac\\AuthorRule', 'O:23:\"backend\\rbac\\AuthorRule\":3:{s:4:\"name\";s:23:\"backend\\rbac\\AuthorRule\";s:9:\"createdAt\";i:1479347016;s:9:\"updatedAt\";i:1479347016;}', '1479347016', '1479347016');
 
 -- ----------------------------
 -- Table structure for myself_menu
@@ -117,7 +121,6 @@ CREATE TABLE `myself_menu` (
 -- Records of myself_menu
 -- ----------------------------
 INSERT INTO `myself_menu` VALUES ('1', '首页', '3', '/site/index', '1', null);
-INSERT INTO `myself_menu` VALUES ('2', '报错页', '3', '/site/error', '2', null);
 INSERT INTO `myself_menu` VALUES ('3', '主页管理', null, null, null, null);
 
 -- ----------------------------
@@ -136,9 +139,10 @@ CREATE TABLE `myself_user` (
   `created_at` int(11) NOT NULL COMMENT '创建时间',
   `updated_at` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
 -- Records of myself_user
 -- ----------------------------
 INSERT INTO `myself_user` VALUES ('1', 'root', 'GiM61PMEcJTPfDqMkyWG_-KY_VaYBvn6', '$2y$13$iUiYV4O5ivgDkljHoqb48ujPxJgGETrnDBfDgsrWLbhtdRmT9BUdm', null, '1533356676@qq.com', '10', '10', '1479202941', '1479202941');
+INSERT INTO `myself_user` VALUES ('2', 'admin', '3zW1EraG8zObXRSXulh6I0gGWBwsJnpv', '$2y$13$sEVlb9026M3juYA.SrTxNebEI7SQ.1BwuGp8gIFIzoaka8MhgMfWG', null, '3095764452@qq.com', '10', '10', '1479350878', '1479350878');

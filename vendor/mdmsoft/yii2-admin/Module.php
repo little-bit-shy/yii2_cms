@@ -5,6 +5,7 @@ namespace mdm\admin;
 use Yii;
 use yii\helpers\Inflector;
 use yii\helpers\ArrayHelper;
+use yii\web\HttpException;
 
 /**
  * GUI manager for RBAC.
@@ -87,6 +88,10 @@ class Module extends \yii\base\Module
      */
     public function init()
     {
+        //判断当前用户是否是超级管理员(root)
+        if(!yii::$app->user->can('root')){
+            throw new HttpException(403,'你没有执行当前操作的权限!!');
+        }
         parent::init();
         if (!isset(Yii::$app->i18n->translations['rbac-admin'])) {
             Yii::$app->i18n->translations['rbac-admin'] = [

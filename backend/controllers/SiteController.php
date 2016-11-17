@@ -6,7 +6,6 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
-use yii\web\HttpException;
 
 /**
  * Site controller
@@ -61,11 +60,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        if (\Yii::$app->user->can('Author',['post' => 'post1'])) {
-            return $this->render('index');
-        }else{
-            throw new HttpException(403,'你没有执行当前操作的权限!!');
-        }
+       return $this->render('index');
     }
 
     /**
