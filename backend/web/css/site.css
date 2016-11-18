@@ -110,12 +110,13 @@ a.desc:after {
     text-decoration: none;
 }
 
+/* content */
+.content{
+    overflow-y: auto;
+}
+
 /* table */
+/*
 table {
     table-layout: fixed;
-    word-wrap:break-word;
-    word-break: break-all;
-}
-td {
-    overflow-x: auto;
-}
+}*/

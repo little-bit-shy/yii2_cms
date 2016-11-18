@@ -16,7 +16,7 @@ class AdminLog
     public static function write($event)
     {
         //过滤日志数据的添加事件
-        if($event->sender->className() === 'common\models\AdminLog'){
+        if($event->sender->className() === 'common\models\Adminlog'){
             return;
         }
         switch($event->name) {
