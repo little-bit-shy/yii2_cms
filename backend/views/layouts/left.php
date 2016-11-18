@@ -12,7 +12,7 @@ use mdm\admin\components\MenuHelper;
                 <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                <p><?= Yii::$app->user->getIdentity()->username?></p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -55,7 +55,7 @@ use mdm\admin\components\MenuHelper;
         <?= dmstr\widgets\Menu::widget(
             [
                 'options' => ['class' => 'sidebar-menu'],
-                'items' => array_merge($item[0],$item[1])
+                'items' => yii\helpers\ArrayHelper::merge($item[0],$item[1])
             ]
         ) ?>
 <!--        MenuHelper::getAssignedMenu(Yii::$app->user->id)-->

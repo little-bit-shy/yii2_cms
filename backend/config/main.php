@@ -6,7 +6,9 @@ $params = array_merge(
     require(__DIR__ . '/params-local.php')
 );
 
-return [
+$event = require(__DIR__ . '/event.php');
+
+$config =  [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
@@ -25,13 +27,13 @@ return [
         '@mdm/admin' => '@vendor/mdmsoft/yii2-admin',
     ],
     'components' => [
-		//'view' => [
+        //'view' => [
         //'theme' => [
         //     'pathMap' => [
         //        '@app/views' => //'@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app'
         //     ],
         // ],
-		//],
+        //],
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
             'defaultRoles' => ['guest'],
@@ -72,8 +74,12 @@ return [
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'levels' => ['trace'],
                 ],
+//                'db' => [
+//                    'class' => 'yii\log\DbTarget',
+//                    'levels' => ['error', 'warning'],
+//                ],
             ],
         ],
         'errorHandler' => [
@@ -90,3 +96,5 @@ return [
     ],
     'params' => $params,
 ];
+
+return yii\helpers\ArrayHelper::merge($event, $config);
