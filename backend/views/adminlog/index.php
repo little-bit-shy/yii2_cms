@@ -20,25 +20,47 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
-            'layout' => "{summary}\n{items}\n{pager}",
+//            'rowOptions' => function($model, $key, $index, $grid) {
+//                return ['class' => $index % 2 ==0 ? 'label-red' : 'label-green'];
+//            },
+            'tableOptions' => ['class' => 'table table-bordered'],
             'columns' => [
-                ['class' => 'yii\grid\SerialColumn'],
-                ['class' => 'yii\grid\CheckboxColumn'],
-                'id',
-                'route',
+                [
+                    'class' => 'yii\grid\SerialColumn',
+                    'headerOptions' => [
+                        'style' => 'width:30px'
+                    ]
+                ],
+                [
+                    'class' => 'yii\grid\CheckboxColumn',
+                    'headerOptions' => [
+                        'style' => 'width:30px'
+                    ]
+                ],
+                [
+                    'attribute' => 'created_at',
+                    'format' => 'datetime',
+                    'headerOptions' => [
+                        'style' => 'width:160px'
+                    ]
+                ],
+//                'id',
                 [
                     'attribute' => 'description',
                     'content' => function ($model) {
-                        return \backend\components\Helper::truncate_utf8_string($model->description, 100);
-                    },
-                    'contentOptions' => [
-                        'style' => 'width:100px;overflow:auto'
+                        return \backend\components\Helper::truncate_utf8_string($model->description, 50);
+                    }
+                ],
+//                'user_id',
+                [
+                    'attribute' => 'route',
+                ],
+                [
+                    'class' => 'yii\grid\ActionColumn',
+                    'headerOptions' => [
+                        'style' => 'width:80px'
                     ]
                 ],
-                'created_at:datetime',
-                'user_id',
-
-                ['class' => 'yii\grid\ActionColumn'],
             ],
         ]); ?>
 </div>

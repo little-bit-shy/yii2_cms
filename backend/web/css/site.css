@@ -109,3 +109,13 @@ a.desc:after {
 .nav > li > form > button:hover {
     text-decoration: none;
 }
+
+/* table */
+table {
+    table-layout: fixed;
+    word-wrap:break-word;
+    word-break: break-all;
+}
+td {
+    overflow-x: auto;
+}
