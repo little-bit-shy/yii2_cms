@@ -10,11 +10,9 @@ use yii\widgets\ActiveForm;
 
 <div class="admin-log-search">
     <div class="box-body">
-        <div class="box-header">
-            <div class="box-title">
-                条件查询
-            </div>
-        </div>
+
+        <?= Html::tag('div', Html::tag('div', '条件查询', ['class' => 'box-title']), ['class' => 'box-header']); ?>
+
         <?php $form = ActiveForm::begin([
             'action' => ['index'],
             'method' => 'get',
