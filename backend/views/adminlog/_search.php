@@ -9,27 +9,32 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="admin-log-search">
+    <div class="box-body">
+        <div class="box-header">
+            <div class="box-title">
+                条件查询
+            </div>
+        </div>
+        <?php $form = ActiveForm::begin([
+            'action' => ['index'],
+            'method' => 'get',
+            'options' => [
+                'class' => 'col-sm-12',
+            ]
+        ]); ?>
 
-    <?php $form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
-    ]); ?>
+        <?= $form->field($model, 'route', ['options' => ['class' => 'col-sm-5']]) ?>
 
-    <?= $form->field($model, 'id') ?>
+        <?= $form->field($model, 'created_at', ['options' => ['class' => 'col-sm-3']]) ?>
 
-    <?= $form->field($model, 'route') ?>
+        <?= $form->field($model, 'user_id', ['options' => ['class' => 'col-sm-2']]) ?>
 
-    <?= $form->field($model, 'description') ?>
+        <div class="form-group col-sm-2" style="padding-top: 25px;">
+            <?= Html::submitButton('查询', ['class' => 'btn btn-primary col-xs-5']) ?>
+            <?= Html::tag('span', '', ['class' => 'col-xs-1']) ?>
+            <?= Html::resetButton('重置', ['class' => 'btn btn-default col-xs-5']) ?>
+        </div>
 
-    <?= $form->field($model, 'created_at') ?>
-
-    <?= $form->field($model, 'user_id') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?php ActiveForm::end(); ?>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>

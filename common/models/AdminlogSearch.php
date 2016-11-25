@@ -41,12 +41,16 @@ class AdminlogSearch extends Adminlog
      */
     public function search($params)
     {
-        $query = AdminLog::find();
+        $query = AdminLog::find()->orderBy(['id' => SORT_DESC]);
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 15,
+            ],
+            'sort' => ['attributes' => ['']]
         ]);
 
         $this->load($params);
@@ -57,15 +61,13 @@ class AdminlogSearch extends Adminlog
             return $dataProvider;
         }
 
-        // grid filtering conditions
+// grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
             'created_at' => $this->created_at,
             'user_id' => $this->user_id,
+            'route' => $this->route,
+//            'description' => $this->description,
         ]);
-
-        $query->andFilterWhere(['like', 'route', $this->route])
-            ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }

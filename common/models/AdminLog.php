@@ -43,10 +43,10 @@ class Adminlog extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'route' => 'Route',
-            'description' => 'Description',
-            'created_at' => 'Created At',
-            'user_id' => 'User ID',
+            'route' => '路由',
+            'description' => '信息',
+            'created_at' => '时间',
+            'user_id' => '用户',
         ];
     }
 }

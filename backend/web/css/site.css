@@ -113,10 +113,9 @@ a.desc:after {
 /* content */
 .content{
     overflow-y: auto;
+    word-break: break-all;
+
 }
 
 /* table */
-/*
-table {
-    table-layout: fixed;
-}*/
+
