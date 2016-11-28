@@ -44,6 +44,16 @@ LAYOUT;
                 'class' => 'yii\grid\SerialColumn',
             ],
             [
+                'header' => '详情',
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view}',
+                'buttons' => [
+                    'view' => function ($url, $model, $key) {
+                        return Html::a(Html::style('',['class'=>'glyphicon glyphicon-eye-open']), $url);
+                    },
+                ],
+            ],
+            [
                 'attribute' => 'created_at',
                 'format' => 'datetime',
             ],
@@ -60,16 +70,6 @@ LAYOUT;
                     return  Html::tag('p', Helper::truncate_utf8_string($model->description,30), ['title'=>$model->description]);
                 },
                 'format' => 'raw'
-            ],
-            [
-                'header' => '详情',
-                'class' => 'yii\grid\ActionColumn',
-                'template' => '{view}',
-                'buttons' => [
-                    'view' => function ($url, $model, $key) {
-                        return Html::a(Html::style('',['class'=>'glyphicon glyphicon-eye-open']), $url);
-                    },
-                ],
             ],
         ],
     ]); ?>
