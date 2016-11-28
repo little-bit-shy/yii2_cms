@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="admin-log-index">
     <?=
-    Html::tag('div', $this->render('_search',['model'=>$searchModel]), ['class'=>'box']);
+    $this->render('_search',['model'=>$searchModel]);
     ?>
 
     <?php
