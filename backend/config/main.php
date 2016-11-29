@@ -25,6 +25,8 @@ $config =  [
     ],
     'aliases' => [
         '@mdm/admin' => '@vendor/mdmsoft/yii2-admin',
+        '@Highcharts' => '@common/widgets/Highcharts-5.0.4',
+        '@Date' => '@common/widgets/Date',
     ],
     'components' => [
         //'view' => [

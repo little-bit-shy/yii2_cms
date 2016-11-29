@@ -1,6 +1,6 @@
 <?php
 
-namespace common\widgets\Date\assets;
+namespace Date\assets;
 
 use yii\web\AssetBundle;
 

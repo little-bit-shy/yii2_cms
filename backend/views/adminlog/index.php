@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use backend\components\Helper;
+use Highcharts\Highcharts;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\AdminLogSearch */
@@ -13,13 +14,17 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="admin-log-index">
     <?=
+    Highcharts::widget();
+    ?>
+
+    <?=
     $this->render('_search',['model'=>$searchModel]);
     ?>
 
     <?php
     $layout = <<<LAYOUT
             <div class='box-body'>
-                <div class='col-sm-4 text-left'>
+                <div class='col-sm-4 text-left' style='margin-bottom:10px;'>
                 {summary}
                 </div>
                 <div class='col-sm-8 text-right'>

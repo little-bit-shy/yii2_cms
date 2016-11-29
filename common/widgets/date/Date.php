@@ -5,12 +5,10 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace common\widgets\Date;
+namespace Date;
 
-use common\widgets\Date\assets\AppAsset;
+use Date\assets\AppAsset;
 use Yii;
-use yii\helpers\ArrayHelper;
-use yii\widgets\ActiveField;
 
 /**
  * //Date range picker

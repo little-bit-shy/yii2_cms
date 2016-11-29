@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use Date\Date;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\AdminLogSearch */
@@ -22,7 +23,7 @@ use yii\widgets\ActiveForm;
 
         <?= $form->field($model, 'route', ['options' => ['class' => 'col-sm-4']])->textInput(['placeholder' => '请输入路由...']) ?>
 
-        <?= \common\widgets\Date\Date::widget([
+        <?= Date::widget([
             'type' => 2,
             'form' => $form,
             'model' => $model,
