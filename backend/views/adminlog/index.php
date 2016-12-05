@@ -170,7 +170,7 @@ LAYOUT;
     <?php \yii\widgets\Pjax::end(); ?>
     <?php
     $js = <<<JS
-        var container = $("#gridview"); //容器
+        var container = $("#gridview");//容器
         container.on('pjax:beforeSend',function(args){
             layer.msg('数据全速加载中...', {
                 icon: 16,
