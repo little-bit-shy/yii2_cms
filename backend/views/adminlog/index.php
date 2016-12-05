@@ -14,10 +14,36 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="admin-log-index">
     <?php
-    $data = '[
-            [Date.UTC(2013,5,3),0.7648],
-            [Date.UTC(2013,5,4),0.7645]
-        ]';
+    $data = "[
+            [Date.UTC(2013,5,3)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,4)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,5)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,6)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,7)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,8)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,9)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,10)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,11)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,12)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,13)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,14)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,15)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,16)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,17)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,18)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,19)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,20)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,21)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,22)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,23)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,24)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,25)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,26)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,27)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,28)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,29)," . rand(1, 100) . "],
+            [Date.UTC(2013,5,30)," . rand(1, 100) . "],
+        ]";
     ?>
     <?=
     Highcharts::widget([
@@ -146,15 +172,24 @@ LAYOUT;
     $js = <<<JS
         var container = $("#gridview");//容器
         container.on('pjax:beforeSend',function(args){
-            layer.load(1);
+            layer.msg('数据全速加载中...', {
+                icon: 16,
+                shade: 0.01
+            });
         })
         container.on('pjax:error',function(args){
             layer.closeAll('loading');
-            layer.msg('数据加载失败...');
+            layer.msg('数据加载失败...', {
+                icon: 5,
+                time: 1000
+            });
         })
         container.on('pjax:success',function(args){
             layer.closeAll('loading');
-            layer.msg('数据加载成功...');
+            layer.msg('数据加载成功...', {
+                icon: 6,
+                time: 1000
+            });
         })
 JS;
 

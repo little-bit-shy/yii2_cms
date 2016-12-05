@@ -30,7 +30,7 @@ class Highcharts extends \yii\bootstrap\Widget
             });
 JS;
         $this->view->registerJs($js);
-        $options = ArrayHelper::merge($this->options,['id' => 'container']);
+        $options = ArrayHelper::merge($this->options,['id' => 'container', 'class' => 'box']);
         echo Html::tag('div','',$options);
     }
 }
