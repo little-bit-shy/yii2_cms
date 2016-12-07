@@ -198,6 +198,7 @@ JS;
 $this->registerJs($js);
 
 $css = <<<CSS
+
 CSS;
 
 $this->registerCss($css);
