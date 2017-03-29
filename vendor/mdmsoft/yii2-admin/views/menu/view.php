@@ -10,11 +10,10 @@ $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('rbac-admin', 'Menus'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="menu-view">
+<div class="menu-view box">
 
 
-
-    <p>
+    <p class="box-header">
         <?= Html::a(Yii::t('rbac-admin', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?=
         Html::a(Yii::t('rbac-admin', 'Delete'), ['delete', 'id' => $model->id], [
@@ -26,17 +25,19 @@ $this->params['breadcrumbs'][] = $this->title;
         ])
         ?>
     </p>
-
-    <?=
-    DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'menuParent.name:text:Parent',
-            'name',
-            'route',
-            'order',
-        ],
-    ])
-    ?>
+    <div class="box_body">
+        <?=
+        DetailView::widget([
+            'model' => $model,
+            'attributes' => [
+                'menuParent.name:text:Parent',
+                'name',
+                'route',
+                'order',
+            ],
+            'template' => '<tr><th style="width:100px">{label}</th><td>{value}</td></tr>'
+        ])
+        ?>
+    </div>
 
 </div>

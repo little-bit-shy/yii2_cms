@@ -21,10 +21,30 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?php Pjax::begin(); ?>
+    <?php
+    $layout = <<<LAYOUT
+            <div class='box-body'>
+                <div class='col-sm-4 text-left' style='margin-bottom:10px;'>
+                {summary}
+                </div>
+                <div class='col-sm-8 text-right'>
+                {pager}
+                </div>
+                {items}
+            </div>
+LAYOUT;
+    ?>
     <?=
     GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'rowOptions' => function ($model, $key, $index, $grid) {
+            return ['class' => $index % 2 == 0 ? 'success' : 'warning'];
+        },
+        'options' => ['class' => 'box'],
+        'headerRowOptions' => ['class' => 'warning'],
+        'tableOptions' => ['class' => 'table table-hover table-condensed'],
+        'layout' => $layout,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             'name',

@@ -30,17 +30,16 @@ $this->registerJs("var _opts = {$opts};");
 $this->registerJs($this->render('_script.js'));
 $animateIcon = ' <i class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></i>';
 ?>
-<div class="assignment-index">
-    <h1><?= $this->title ?></h1>
+<div class="assignment-index box">
 
-    <div class="row">
-        <div class="col-sm-5">
+    <div class="row box-body">
+        <div class="col-sm-4">
             <input class="form-control search" data-target="avaliable"
                    placeholder="<?= Yii::t('rbac-admin', 'Search for avaliable') ?>">
             <select multiple size="20" class="form-control list" data-target="avaliable">
             </select>
         </div>
-        <div class="col-sm-1" style="text-align: center">
+        <div class="col-sm-2" style="text-align: center">
             <br><br>
             <?= Html::a('&gt;&gt;' . $animateIcon, ['assign', 'id' => (string)$model->id], [
                 'class' => 'btn btn-success btn-assign',
@@ -53,7 +52,7 @@ $animateIcon = ' <i class="glyphicon glyphicon-refresh glyphicon-refresh-animate
                 'title' => Yii::t('rbac-admin', 'Remove')
             ]) ?>
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-4">
             <input class="form-control search" data-target="assigned"
                    placeholder="<?= Yii::t('rbac-admin', 'Search for assigned') ?>">
             <select multiple size="20" class="form-control list" data-target="assigned">

@@ -23,12 +23,37 @@ unset($rules[RouteRule::RULE_NAME]);
     <p>
         <?= Html::a(Yii::t('rbac-admin', 'Create ' . $labels['Item']), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+
+    <?php
+    $layout = <<<LAYOUT
+            <div class='box-body'>
+                <div class='col-sm-4 text-left' style='margin-bottom:10px;'>
+                {summary}
+                </div>
+                <div class='col-sm-8 text-right'>
+                {pager}
+                </div>
+                {items}
+            </div>
+LAYOUT;
+    ?>
+
     <?=
     GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'rowOptions' => function ($model, $key, $index, $grid) {
+            return ['class' => $index % 2 == 0 ? 'success' : 'warning'];
+        },
+        'options' => ['class' => 'box'],
+        'headerRowOptions' => ['class' => 'warning'],
+        'tableOptions' => ['class' => 'table table-hover table-condensed'],
+        'layout' => $layout,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+            ],
             [
                 'attribute' => 'name',
                 'label' => Yii::t('rbac-admin', 'Name'),
@@ -42,7 +67,6 @@ unset($rules[RouteRule::RULE_NAME]);
                 'attribute' => 'description',
                 'label' => Yii::t('rbac-admin', 'Description'),
             ],
-            ['class' => 'yii\grid\ActionColumn',],
         ],
     ])
     ?>

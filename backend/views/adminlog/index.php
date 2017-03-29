@@ -176,7 +176,8 @@ $js = <<<JS
         container.on('pjax:beforeSend',function(args){
             var msg = layer.msg('数据全速加载中...', {
                 icon: 16,
-                shade: 0.01
+                shade: 0.01,
+                time: 0
             });
         })
         container.on('pjax:error',function(args){
