@@ -20,17 +20,18 @@ class Highcharts extends \yii\bootstrap\Widget
 
     public function init()
     {
+        static $number = 0;
+        ++$number;
         parent::init();
-
         AppAsset::register($this->view);
         $config = $this->config;
         $js = <<<JS
             $(function () {
-                Highcharts.chart('container', $config);
+                Highcharts.chart('container_' + $number, $config);
             });
 JS;
         $this->view->registerJs($js);
-        $options = ArrayHelper::merge($this->options,['id' => 'container', 'class' => 'box']);
-        echo Html::tag('div','',$options);
+        $options = ArrayHelper::merge($this->options, ['id' => 'container_' . $number, 'class' => 'box']);
+        echo Html::tag('div', '', $options);
     }
 }
